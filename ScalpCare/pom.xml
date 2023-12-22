@@ -17,6 +17,7 @@
 		<java.version>1.8</java.version>
 	</properties>
 	<dependencies>
+	<!-- test 주석 -->
 		<!-- jstl -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
