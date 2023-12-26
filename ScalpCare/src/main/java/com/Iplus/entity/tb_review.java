@@ -24,15 +24,15 @@ public class tb_review {
 	@Id
 	@Column(insertable = false, updatable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long num;
+	private Long reNum;
 	
 	@ManyToOne
-	@JoinColumn(referencedColumnName = "acnum")
-	private tb_admin_scalp_care acnum;
+	@JoinColumn(referencedColumnName = "acNum")
+	private tb_admin_scalp_care reAcNum;
 	
 	@ManyToOne
 	@JoinColumn(referencedColumnName = "uid")
-	private tb_member uid;
+	private tb_member reUid;
 	
 	@Column(length = 1000)
 	private String content;

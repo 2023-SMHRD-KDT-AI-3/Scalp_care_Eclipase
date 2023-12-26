@@ -21,12 +21,12 @@ public class tb_user_like{
 	@Id
 	@ManyToOne
 	@JoinColumn(referencedColumnName = "uid")
-	private tb_member uid;
+	private tb_member likeUid;
 	
 	@Id
 	@ManyToOne
-	@JoinColumn(referencedColumnName = "acnum")
-	private tb_admin_scalp_care acnum;
+	@JoinColumn(referencedColumnName = "acNum")
+	private tb_admin_scalp_care likeAcNum;
 
 	
 	@Column

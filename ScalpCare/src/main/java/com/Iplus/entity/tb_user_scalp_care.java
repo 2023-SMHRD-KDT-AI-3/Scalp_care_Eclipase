@@ -23,11 +23,11 @@ public class tb_user_scalp_care {
 	@Id
 	@Column(insertable = false, updatable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long ucnum;
+	private Long ucNum;
 	
 	@ManyToOne
 	@JoinColumn(referencedColumnName = "uid")
-	private tb_member uid;
+	private tb_member ucUid;
 	
 	@Column(length = 600)
 	private String img;
@@ -39,7 +39,7 @@ public class tb_user_scalp_care {
 	private String content;
 	
 	@Column(length = 1)
-	private String condition;
+	private String ucCondition;
 	
 	@Column(updatable = false, insertable = false, columnDefinition = "datetime default now()")
 	private Date indate;
@@ -47,6 +47,6 @@ public class tb_user_scalp_care {
 	
 	@Override
 	public String toString() {
-		return "tb_member";
+		return "tb_user_scalp_care";
 	}
 }

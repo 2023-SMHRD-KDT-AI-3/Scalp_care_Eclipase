@@ -25,11 +25,11 @@ public class tb_admin_scalp_care {
 	@Id
 	@Column(insertable = false, updatable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long acnum;
+	private Long acNum;
 	
 	@ManyToOne
 	@JoinColumn(referencedColumnName = "uid")
-	private tb_member uid;
+	private tb_member acUid;
 	
 	@Column(length = 600)
 	private String img;
@@ -45,11 +45,11 @@ public class tb_admin_scalp_care {
 	
 	
 	// 회원(ac_num) 1<----->N 관리자 두피 케어(re_ac_num)
-	@OneToMany(mappedBy = "num")	// 1대다 관계, mappedBy에 연결할 컬럼 지정
-	private List<tb_review> re;	// List<연결된 테이블의 자료형>
+	@OneToMany(mappedBy = "reAcNum")	// 1대다 관계, mappedBy에 연결할 컬럼 지정
+	private List<tb_review> reNum;	// List<연결된 테이블의 자료형>
 	
-	@OneToMany(mappedBy = "num")	// 1대다 관계, mappedBy에 연결할 컬럼 지정
-	private List<tb_user_like> like;	// List<연결된 테이블의 자료형>
+	@OneToMany(mappedBy = "likeAcNum")	// 1대다 관계, mappedBy에 연결할 컬럼 지정
+	private List<tb_user_like> likeAcNum;	// List<연결된 테이블의 자료형>
 	
 	@Override
 	public String toString() {
