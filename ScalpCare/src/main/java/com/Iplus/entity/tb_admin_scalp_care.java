@@ -25,30 +25,30 @@ public class tb_admin_scalp_care {
 	@Id
 	@Column(insertable = false, updatable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long ac_num;
+	private Long acnum;
 	
 	@ManyToOne
-	@JoinColumn(referencedColumnName = "m_uid")
-	private tb_member ac_m_uid;
+	@JoinColumn(referencedColumnName = "uid")
+	private tb_member uid;
 	
 	@Column(length = 600)
-	private String ac_img;
+	private String img;
 	
 	@Column(length = 1000)
-	private String ac_content;
+	private String content;
 	
 	@Column(updatable = false, insertable = false, columnDefinition = "datetime default now()")
-	private Date ac_indate;
+	private Date indate;
 	
 	@Column(insertable = false, columnDefinition = "int default 0")
-	private Long ac_views;
+	private Long views;
 	
 	
 	// 회원(ac_num) 1<----->N 관리자 두피 케어(re_ac_num)
-	@OneToMany(mappedBy = "re_ac_num")	// 1대다 관계, mappedBy에 연결할 컬럼 지정
+	@OneToMany(mappedBy = "num")	// 1대다 관계, mappedBy에 연결할 컬럼 지정
 	private List<tb_review> re;	// List<연결된 테이블의 자료형>
 	
-	@OneToMany(mappedBy = "like_ac_num")	// 1대다 관계, mappedBy에 연결할 컬럼 지정
+	@OneToMany(mappedBy = "num")	// 1대다 관계, mappedBy에 연결할 컬럼 지정
 	private List<tb_user_like> like;	// List<연결된 테이블의 자료형>
 	
 	@Override

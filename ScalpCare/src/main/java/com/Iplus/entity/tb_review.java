@@ -24,24 +24,24 @@ public class tb_review {
 	@Id
 	@Column(insertable = false, updatable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long re_num;
+	private Long num;
 	
 	@ManyToOne
-	@JoinColumn(referencedColumnName = "ac_num")
-	private tb_admin_scalp_care re_ac_num;
+	@JoinColumn(referencedColumnName = "acnum")
+	private tb_admin_scalp_care acnum;
 	
 	@ManyToOne
-	@JoinColumn(referencedColumnName = "m_uid")
-	private tb_member re_m_uid;
+	@JoinColumn(referencedColumnName = "uid")
+	private tb_member uid;
 	
 	@Column(length = 1000)
-	private String re_content;
+	private String content;
 	
 	@Column(columnDefinition = "int default 0")
-	private Long re_point;
+	private Long point;
 	
 	@Column(updatable = false, insertable = false, columnDefinition = "datetime default now()")
-	private Date re_indate;
+	private Date indate;
 	
 	@Override
 	public String toString() {

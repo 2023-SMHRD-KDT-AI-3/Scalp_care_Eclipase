@@ -20,17 +20,17 @@ public class tb_user_like{
 	
 	@Id
 	@ManyToOne
-	@JoinColumn(referencedColumnName = "m_uid")
-	private tb_member like_m_uid;
+	@JoinColumn(referencedColumnName = "uid")
+	private tb_member uid;
 	
 	@Id
 	@ManyToOne
-	@JoinColumn(referencedColumnName = "ac_num")
-	private tb_admin_scalp_care like_ac_num;
+	@JoinColumn(referencedColumnName = "acnum")
+	private tb_admin_scalp_care acnum;
 
 	
 	@Column
-	private Boolean like_good;
+	private Boolean good;
 	
 	@Override
 	public String toString() {
