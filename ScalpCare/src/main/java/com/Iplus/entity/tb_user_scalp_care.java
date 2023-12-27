@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,6 +30,7 @@ public class tb_user_scalp_care {
 	
 	@ManyToOne
 	@JoinColumn(referencedColumnName = "uid")
+	@JsonBackReference
 	private tb_member ucUid;
 	
 	@Column(length = 600)
@@ -49,4 +53,6 @@ public class tb_user_scalp_care {
 	public String toString() {
 		return "tb_user_scalp_care";
 	}
+
+
 }
