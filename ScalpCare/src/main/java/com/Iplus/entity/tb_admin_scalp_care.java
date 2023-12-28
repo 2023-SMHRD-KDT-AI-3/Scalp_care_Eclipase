@@ -34,7 +34,7 @@ public class tb_admin_scalp_care {
 	@Column(length = 100)
 	private String title;
 	
-	@Column(length = 500)
+	@Column(length = 600)
 	private String img;
 	
 	@Column(length = 1000)
@@ -46,8 +46,6 @@ public class tb_admin_scalp_care {
 	@Column(insertable = false, columnDefinition = "int default 0")
 	private Long views;
 	
-	@Column(length = 100)
-	private String title;
 	
 	
 	// 회원(ac_num) 1<----->N 관리자 두피 케어(re_ac_num)

@@ -20,17 +20,19 @@ public class NewsController {
 	
 	@RequestMapping("/Newsview")
 	public List<String> Newsview(tb_admin_scalp_care care) {
+		System.out.println("여기까진 옴");
 		List<tb_admin_scalp_care> ac_board = repo.findAll();
 		
 		// 객체 → Json(String)
 		ObjectMapper objectMapper = new ObjectMapper();
-		System.out.println(ac_board);
+		System.out.println("여기는?" + ac_board);
 		
 		// String List
 		List<String> jsonList = new ArrayList<>();
 		String jsonString;
 			try {
 				for(tb_admin_scalp_care obj : ac_board) {
+					System.out.println(obj);
 					// 객체 → Json형태 String → StringList에 담음 
 					jsonString = objectMapper.writeValueAsString(obj);
 					jsonList.add(jsonString);
