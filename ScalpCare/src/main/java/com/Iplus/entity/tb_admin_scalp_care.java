@@ -31,6 +31,9 @@ public class tb_admin_scalp_care {
 	@JoinColumn(referencedColumnName = "uid")
 	private tb_member acUid;
 	
+	@Column(length = 100)
+	private String title;
+	
 	@Column(length = 600)
 	private String img;
 	
