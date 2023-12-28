@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,6 +31,7 @@ public class tb_admin_scalp_care {
 	
 	@ManyToOne
 	@JoinColumn(referencedColumnName = "uid")
+	@JsonBackReference
 	private tb_member acUid;
 	
 	@Column(length = 100)

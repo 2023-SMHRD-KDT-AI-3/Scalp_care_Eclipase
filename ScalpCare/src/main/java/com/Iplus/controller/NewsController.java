@@ -19,13 +19,14 @@ public class NewsController {
 	private AdminScalpCareRepository repo;
 	
 	@RequestMapping("/Newsview")
-	public List<String> Newsview(tb_admin_scalp_care care) {
-		System.out.println("여기까진 옴");
-		List<tb_admin_scalp_care> ac_board = repo.findAll();
+	public List<String> Newsview() {
+		
+		List<tb_admin_scalp_care> ac_board = repo.findAll();		
+		System.out.println("여기는?" + ac_board);
+		
 		
 		// 객체 → Json(String)
 		ObjectMapper objectMapper = new ObjectMapper();
-		System.out.println("여기는?" + ac_board);
 		
 		// String List
 		List<String> jsonList = new ArrayList<>();

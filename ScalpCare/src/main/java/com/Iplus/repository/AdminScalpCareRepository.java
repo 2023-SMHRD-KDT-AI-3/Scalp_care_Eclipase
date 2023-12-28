@@ -7,5 +7,5 @@ import com.Iplus.entity.tb_admin_scalp_care;
 
 @Repository
 public interface AdminScalpCareRepository extends JpaRepository<tb_admin_scalp_care, String> {
-
+	
 }
