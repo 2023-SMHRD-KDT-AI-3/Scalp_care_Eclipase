@@ -1,10 +1,12 @@
 package com.Iplus.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,6 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.Iplus.entity.tb_user_scalp_care;
 import com.Iplus.repository.MemberRepository;
 import com.Iplus.repository.UserScalpCareRepository;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
 
 @RestController
 public class BoardController {
@@ -30,11 +35,26 @@ public class BoardController {
 	}
 		
 	@RequestMapping("/Boardview")
-	public List<tb_user_scalp_care> Boardview(tb_user_scalp_care care) {
+	public List<String> Boardview(tb_user_scalp_care care) {
 		
-		List<tb_user_scalp_care> result = repo.findAll();
+		List<tb_user_scalp_care> uc_board = repo.findAll();
 		
-		System.out.println(result);
-		return result;	
+		// 객체 → Json(String)
+		ObjectMapper objectMapper = new ObjectMapper();
+		System.out.println(uc_board);
+		
+		// String List
+		List<String> jsonList = new ArrayList<>();
+		String jsonString ;
+			try {
+				for (tb_user_scalp_care obj : uc_board) {
+					// 객체 → Json형태 String → StringList에 담음
+					jsonString = objectMapper.writeValueAsString(obj);
+					jsonList.add(jsonString);
+				}
+			} catch (JsonProcessingException e) {
+				e.printStackTrace();
+			}
+		return jsonList;	
 	}	
 }
