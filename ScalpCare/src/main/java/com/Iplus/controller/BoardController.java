@@ -3,20 +3,14 @@ package com.Iplus.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Iplus.entity.tb_user_scalp_care;
-import com.Iplus.repository.MemberRepository;
 import com.Iplus.repository.UserScalpCareRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
 
 @RestController
 public class BoardController {

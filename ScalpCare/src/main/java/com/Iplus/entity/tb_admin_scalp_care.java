@@ -43,6 +43,9 @@ public class tb_admin_scalp_care {
 	@Column(insertable = false, columnDefinition = "int default 0")
 	private Long views;
 	
+	@Column(length = 100)
+	private String title;
+	
 	
 	// 회원(ac_num) 1<----->N 관리자 두피 케어(re_ac_num)
 	@OneToMany(mappedBy = "reAcNum")	// 1대다 관계, mappedBy에 연결할 컬럼 지정
