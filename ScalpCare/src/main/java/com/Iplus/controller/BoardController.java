@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,7 +32,8 @@ public class BoardController {
 	@RequestMapping("/Boardview")
 	public List<String> Boardview(tb_user_scalp_care care) {
 		
-		List<tb_user_scalp_care> uc_board = repo.findAll();
+		// 내림차순으로 정렬
+		List<tb_user_scalp_care> uc_board = repo.findAll(Sort.by(Sort.Direction.DESC,"ucNum"));
 		
 		// 객체 → Json(String)
 		ObjectMapper objectMapper = new ObjectMapper();
