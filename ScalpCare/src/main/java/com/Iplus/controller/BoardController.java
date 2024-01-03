@@ -103,16 +103,7 @@ public class BoardController {
 		String jsonString ;
 			try {
 				for (tb_user_scalp_care obj : uc_board) {
-
-//					// Base64로 인코딩
-//					byte[] imageBytes = Files.readAllBytes(Paths.get(obj.getImg()));
-//					System.out.println(imageBytes);
-//					String base64EncodedImage = Base64.getEncoder().encodeToString(imageBytes);
-//					
-//					System.out.println(base64EncodedImage.length());
-					
-//					obj.setImg(base64EncodedImage);
-					
+				
 					// 객체 → Json형태 String → StringList에 담음
 					jsonString = objectMapper.writeValueAsString(obj);
 					jsonList.add(jsonString);
