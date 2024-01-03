@@ -22,6 +22,7 @@ public class NewsController {
 	public List<String> Newsview() {
 		
 		List<tb_admin_scalp_care> ac_board = repo.findAll();		
+		
 		System.out.println("여기는?" + ac_board);
 		
 		
