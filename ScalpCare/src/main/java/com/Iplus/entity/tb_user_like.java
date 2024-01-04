@@ -7,6 +7,8 @@ import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,11 +23,13 @@ public class tb_user_like{
 	@Id
 	@ManyToOne
 	@JoinColumn(referencedColumnName = "uid")
+	@JsonBackReference
 	private tb_member likeUid;
 	
 	@Id
 	@ManyToOne
 	@JoinColumn(referencedColumnName = "acNum")
+	@JsonBackReference
 	private tb_admin_scalp_care likeAcNum;
 
 	

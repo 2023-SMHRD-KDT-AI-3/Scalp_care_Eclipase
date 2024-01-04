@@ -24,11 +24,8 @@ public class NewsController {
 	private AdminScalpCareRepository repo;
 	
 	@RequestMapping("/Newsview")
-	public List<String> Newsview(String acUid) {
+	public List<String> Newsview() {
 		
-		tb_member member = new tb_member();
-		member.setUid(acUid);
-
 		List<tb_admin_scalp_care> ac_board = repo.findAll();	
 		System.out.println("여기는?" + ac_board);		
 		
