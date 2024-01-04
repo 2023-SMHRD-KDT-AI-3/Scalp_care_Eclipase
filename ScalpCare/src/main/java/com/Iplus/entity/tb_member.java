@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
@@ -42,6 +44,7 @@ public class tb_member {
 
 	// 회원(m_uid) 1<----->N 관리자 두피 케어(uid)
 	@OneToMany(mappedBy = "acUid")
+	@JsonManagedReference
 	private List<tb_admin_scalp_care> ac;	// List<연결된 테이블의 자료형>
 	
 	// 회원(m_uid) 1<----->N 관리자 두피 케어(uid)

@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -32,7 +33,7 @@ public class tb_admin_scalp_care {
 	
 	@ManyToOne
 	@JoinColumn(referencedColumnName = "uid")
-	@JsonBackReference
+	@JsonIgnore
 	private tb_member acUid;
 	
 	@Column(length = 100)
