@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -55,6 +56,7 @@ public class tb_admin_scalp_care {
 	
 	// 회원(ac_num) 1<----->N 관리자 두피 케어(re_ac_num)
 	@OneToMany(mappedBy = "reAcNum")	// 1대다 관계, mappedBy에 연결할 컬럼 지정
+	@JsonManagedReference
 	private List<tb_review> reNum;	// List<연결된 테이블의 자료형>
 	
 	@OneToMany(mappedBy = "likeAcNum")	// 1대다 관계, mappedBy에 연결할 컬럼 지정

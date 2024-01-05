@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,10 +30,12 @@ public class tb_review {
 	
 	@ManyToOne
 	@JoinColumn(referencedColumnName = "acNum")
+	@JsonBackReference
 	private tb_admin_scalp_care reAcNum;
 	
 	@ManyToOne
 	@JoinColumn(referencedColumnName = "uid")
+	@JsonBackReference
 	private tb_member reUid;
 	
 	@Column(length = 1000)

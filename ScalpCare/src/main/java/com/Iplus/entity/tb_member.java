@@ -49,6 +49,7 @@ public class tb_member {
 	
 	// 회원(m_uid) 1<----->N 관리자 두피 케어(uid)
 	@OneToMany(mappedBy = "reUid")	// 1대다 관계, mappedBy에 연결할 컬럼 지정
+	@JsonManagedReference
 	private List<tb_review> re;	// List<연결된 테이블의 자료형>
 	
 	// 회원(m_uid) 1<----->N 관리자 두피 케어(uid)
