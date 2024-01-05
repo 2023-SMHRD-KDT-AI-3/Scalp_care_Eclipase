@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Iplus.entity.tb_admin_scalp_care;
@@ -73,5 +74,20 @@ public class NewsController {
 			
 		return base64_img;	
 	}	
+	
+	// 댓글 수 증가 후 출력
+		@RequestMapping("/ViewPlus")
+		@ResponseBody
+		public int ViewPlus( String acNum) {
+			// 업데이트
+		    repo.ViewPlus(acNum);
+		    
+		    // 카운트
+		    int ViewPlusCount = repo.ViewPlusCount(acNum);
+		    
+		    System.out.println("조회 수 출력: " + ViewPlusCount);
+		    
+		    return ViewPlusCount ;
+		}
 	
 }

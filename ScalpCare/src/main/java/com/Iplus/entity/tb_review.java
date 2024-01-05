@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OrderBy;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -44,6 +45,7 @@ public class tb_review {
 	@Column(columnDefinition = "int default 0")
 	private Long point;
 	
+	@OrderBy("indate DESC")
 	@Column(updatable = false, insertable = false, columnDefinition = "datetime default now()")
 	private Date indate;
 	

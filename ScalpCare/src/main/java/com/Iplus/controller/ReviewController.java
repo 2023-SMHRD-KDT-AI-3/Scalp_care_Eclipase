@@ -41,23 +41,15 @@ public class ReviewController {
 	// 댓글 출력
 		@RequestMapping("/reviewView")
 		public List<String> reviewView(Long reAcNum) { 
-			System.out.println("여기까지 와라");
-			
-//			tb_admin_scalp_care admin = new tb_admin_scalp_care();
-//			admin.setAcNum(reAcNum);
 			
 			tb_admin_scalp_care ac = new tb_admin_scalp_care();
 			ac.setAcNum(reAcNum);
 
-			// 내림차순으로 정렬
 			List<tb_review> re_board = repo.findAllByReAcNum(ac);
-			//List<tb_review> re_board = repo.findAllByUcUid(admin);
 			
-			System.out.println("확인" + re_board.size());
 			String board_uid = re_board.get(0).getReUid().getUid();
 						
-			for(int i=0; i<re_board.size(); i++) {
-				
+			for(int i=0; i<re_board.size(); i++) {				
 				re_board.get(i).getReUid().setUid(m_repo.findByUid(board_uid).getName());
 			}
 			
