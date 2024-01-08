@@ -111,6 +111,9 @@ public class BoardController {
 	public String getImage(String ucNum) {
 	
 		System.out.println("이 함수 실행 안함?");
+		System.out.println(ucNum);
+		
+		// DB에서 경로 받아옴
 		tb_user_scalp_care uc_board = repo.findByUcNum(Long.valueOf(ucNum));
 		String base64_img = null;
 		
@@ -120,9 +123,10 @@ public class BoardController {
 				
 		
 			try {
-				// Base64로 인코딩
+				// 경로를 이용하여 이미지 가져오기
 				byte[] imageBytes = Files.readAllBytes(Paths.get(uc_board.getImg()));
 				
+				// Base64로 인코딩
 				base64_img = Base64.getEncoder().encodeToString(imageBytes);	
 				System.out.println(base64_img.length());
 			

@@ -40,10 +40,7 @@ public class tb_user_scalp_care {
 	
 	@Column(length = 1000)
 	private String content;
-	
-	@Column(length = 1)
-	private String ucCondition;
-	
+		
 	@Column(updatable = false, insertable = false, columnDefinition = "datetime default now()")
 	private Date indate;
 	
