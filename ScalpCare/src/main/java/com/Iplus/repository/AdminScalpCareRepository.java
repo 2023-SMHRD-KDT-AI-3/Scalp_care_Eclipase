@@ -1,5 +1,7 @@
 package com.Iplus.repository;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.apache.ibatis.annotations.Param;
@@ -24,6 +26,10 @@ public interface AdminScalpCareRepository extends JpaRepository<tb_admin_scalp_c
 	// 조회 수 카운트
 	@Query(value = "SELECT views FROM tb_admin_scalp_care WHERE ac_num = :acNum", nativeQuery = true)
 	int ViewPlusCount(@Param("acNum") String acNum);
+
+	// 인기 게시글 가져오기(조회수를 내림차순)
+	@Query("SELECT ac FROM tb_admin_scalp_care ac ORDER BY ac.views DESC")
+	List<tb_admin_scalp_care> NewsviewBest();
 	
 	
 	

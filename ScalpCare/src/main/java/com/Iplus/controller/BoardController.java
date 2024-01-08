@@ -110,7 +110,7 @@ public class BoardController {
 	@RequestMapping("/getImage")
 	public String getImage(String ucNum) {
 	
-		System.out.println("이 함수 실행 안함?");
+		System.out.println("여기 왔니?");
 		tb_user_scalp_care uc_board = repo.findByUcNum(Long.valueOf(ucNum));
 		String base64_img = null;
 		
