@@ -35,7 +35,7 @@ public class tb_user_scalp_care {
 	@Column(length = 600)
 	private String img;
 	
-	@Column(length = 1)
+	@Column(length = 10)
 	private String result;
 	
 	@Column(length = 1000)

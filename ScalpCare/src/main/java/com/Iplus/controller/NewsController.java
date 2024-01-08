@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Iplus.entity.tb_admin_scalp_care;
@@ -73,5 +74,47 @@ public class NewsController {
 			
 		return base64_img;	
 	}	
+	
+	// 댓글 수 증가 후 출력
+		@RequestMapping("/ViewPlus")
+		@ResponseBody
+		public int ViewPlus( String acNum) {
+			// 업데이트
+		    repo.ViewPlus(acNum);
+		    
+		    // 카운트
+		    int ViewPlusCount = repo.ViewPlusCount(acNum);
+		    
+		    System.out.println("조회 수 출력: " + ViewPlusCount);
+		    
+		    return ViewPlusCount ;
+		}
+	
+		
+	// 인기 게시글 가져오기
+	@RequestMapping("/NewsviewBest")
+		public List<String> NewsviewBest() {
+			
+			List<tb_admin_scalp_care> ac_board = repo.NewsviewBest();	
+			System.out.println("여기에 인기글 가져오고 싶당?" + ac_board);		
+			
+			// 객체 → Json(String)
+			ObjectMapper objectMapper = new ObjectMapper();
+			
+			// String List
+			List<String> jsonList = new ArrayList<>();
+			String jsonString;
+				try {
+					for(tb_admin_scalp_care obj : ac_board) {
+						System.out.println(obj);
+						// 객체 → Json형태 String → StringList에 담음 
+						jsonString = objectMapper.writeValueAsString(obj);
+						jsonList.add(jsonString);
+					}
+				} catch (JsonProcessingException e) {
+					e.printStackTrace();
+				}
+			return jsonList;
+		}
 	
 }
