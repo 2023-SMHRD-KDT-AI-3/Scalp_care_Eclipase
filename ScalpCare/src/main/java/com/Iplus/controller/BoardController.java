@@ -38,6 +38,7 @@ public class BoardController {
 	@RequestMapping("/Boardsave")
 	public void Boardsave(String content, String img, String ucUid, String indate) {
 
+		System.out.println("오고있지?");
 		System.out.println(ucUid);
 		
 		// 이미지 Base64에서 이름 설정하기
@@ -87,7 +88,8 @@ public class BoardController {
 		member.setUid(ucUid);
 
 		// 내림차순으로 정렬
-		List<tb_user_scalp_care> uc_board = repo.findAll(Sort.by(Sort.Direction.DESC,"ucNum"));
+		List<tb_user_scalp_care> uc_board = repo.Boardview(member);
+		//List<tb_user_scalp_care> uc_board = repo.findAll(Sort.by(Sort.Direction.DESC,"ucNum"));
 		//List<tb_user_scalp_care> uc_board = repo.findAllByUcUid(member);		
 		
 		// 객체 → Json(String)
