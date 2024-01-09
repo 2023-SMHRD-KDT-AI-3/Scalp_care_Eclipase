@@ -20,9 +20,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.Iplus.entity.tb_admin_scalp_care;
 import com.Iplus.entity.tb_member;
 import com.Iplus.entity.tb_user_scalp_care;
 import com.Iplus.repository.UserScalpCareRepository;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
@@ -133,4 +135,29 @@ public class BoardController {
 		return base64_img;	
 	}	
 	
+	// 최근 게시글 가져오기
+	@RequestMapping("/getBoardDataRecent")
+		public List<String> getBoardDataRecent() {
+			
+			List<tb_user_scalp_care> bc_board = repo.getBoardDataRecent();	
+			System.out.println("여기에 최근글 가져오고 싶당?" + bc_board);		
+			
+			// 객체 → Json(String)
+			ObjectMapper objectMapper = new ObjectMapper();
+			
+			// String List
+			List<String> jsonList = new ArrayList<>();
+			String jsonString;
+				try {
+					for(tb_user_scalp_care obj : bc_board) {
+						System.out.println(obj);
+						// 객체 → Json형태 String → StringList에 담음 
+						jsonString = objectMapper.writeValueAsString(obj);
+						jsonList.add(jsonString);
+					}
+				} catch (JsonProcessingException e) {
+					e.printStackTrace();
+				}
+			return jsonList;
+		}
 }
