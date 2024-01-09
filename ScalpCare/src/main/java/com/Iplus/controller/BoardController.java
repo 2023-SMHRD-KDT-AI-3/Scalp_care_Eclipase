@@ -6,8 +6,11 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.Date;
 import java.util.List;
 
 
@@ -166,4 +169,44 @@ public class BoardController {
 				}
 			return jsonList;
 		}
+	
+	// 날짜 필터(검색)
+	@RequestMapping("/DateView")
+	public List<String> DateView(String ucUid, String startDate, String endDate) {
+		
+		// startDate와 endDate를 Date형식(java.util.Date)으로 변환
+	    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	    Date start = null;
+	    Date end = null;
+	    try {
+	        start = sdf.parse(startDate);
+	        end = sdf.parse(endDate);
+	    } catch (ParseException e) {
+	        e.printStackTrace();
+	    }
+
+		tb_member member = new tb_member();
+		member.setUid(ucUid);
+
+		// 게시글 불러오기
+		List<tb_user_scalp_care> uc_board = repo.DateView(member, start, end);
+		
+		// 객체 → Json(String)
+		ObjectMapper objectMapper = new ObjectMapper();
+		
+		// String List
+		List<String> jsonList = new ArrayList<>();
+		String jsonString ;
+			try {
+				for (tb_user_scalp_care obj : uc_board) {
+				
+					// 객체 → Json형태 String → StringList에 담음
+					jsonString = objectMapper.writeValueAsString(obj);
+					jsonList.add(jsonString);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		return jsonList;	
+	}	
 }
