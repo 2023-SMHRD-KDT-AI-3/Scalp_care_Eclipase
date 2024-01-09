@@ -34,7 +34,7 @@ public class BoardController {
 
 	// 넘겨받은 값을 가져올 때 매개변수의 이름은 key와 동일하게 작성해야 한다.
 	@RequestMapping("/Boardsave")
-	public void Boardsave(String content, String img, String ucUid, String indate) {
+	public void Boardsave(String content, String img, String ucUid, String indate, String result) {
 
 		System.out.println(ucUid);
 		
@@ -73,6 +73,7 @@ public class BoardController {
 		sc_care.setUcUid(member);
 		sc_care.setImg(savePath);
 		sc_care.setContent(content);
+		sc_care.setResult(result);
 		
 		repo.save(sc_care);
 
