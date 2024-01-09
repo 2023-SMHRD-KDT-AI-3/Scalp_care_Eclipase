@@ -140,9 +140,12 @@ public class BoardController {
 	
 	// 최근 게시글 가져오기
 	@RequestMapping("/getBoardDataRecent")
-		public List<String> getBoardDataRecent() {
+		public List<String> getBoardDataRecent(String ucUid) {
 			
-			List<tb_user_scalp_care> bc_board = repo.getBoardDataRecent();	
+			tb_member member = new tb_member();
+			member.setUid(ucUid);
+			
+			List<tb_user_scalp_care> bc_board = repo.Boardview(member);	
 			System.out.println("여기에 최근글 가져오고 싶당?" + bc_board);		
 			
 			// 객체 → Json(String)
