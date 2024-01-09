@@ -88,10 +88,8 @@ public class BoardController {
 		tb_member member = new tb_member();
 		member.setUid(ucUid);
 
-		// 내림차순으로 정렬
+		// 게시글 불러오기
 		List<tb_user_scalp_care> uc_board = repo.Boardview(member);
-		//List<tb_user_scalp_care> uc_board = repo.findAll(Sort.by(Sort.Direction.DESC,"ucNum"));
-		//List<tb_user_scalp_care> uc_board = repo.findAllByUcUid(member);		
 		
 		// 객체 → Json(String)
 		ObjectMapper objectMapper = new ObjectMapper();

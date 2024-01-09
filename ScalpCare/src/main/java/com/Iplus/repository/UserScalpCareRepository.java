@@ -14,8 +14,6 @@ import com.Iplus.entity.tb_user_scalp_care;
 @Repository
 public interface UserScalpCareRepository extends JpaRepository<tb_user_scalp_care, Long>{
 
-	//List<tb_user_scalp_care> findAllByUcUid(tb_member ucUid);
-
 	// 이미지
 	tb_user_scalp_care findByUcNum(long ucNum);
 
@@ -24,7 +22,7 @@ public interface UserScalpCareRepository extends JpaRepository<tb_user_scalp_car
 	@Query("SELECT uc FROM tb_user_scalp_care uc ORDER BY uc.indate DESC")
 	List<tb_user_scalp_care> getBoardDataRecent();
 
-	// 
+	// ucUid(member)기준으로 결과를 필터링 후 indate 기준으로 내림차순
 	@Query("SELECT uc FROM tb_user_scalp_care uc WHERE uc.ucUid = :member ORDER BY uc.indate DESC")
     List<tb_user_scalp_care> Boardview(@Param("member") tb_member member);
 
