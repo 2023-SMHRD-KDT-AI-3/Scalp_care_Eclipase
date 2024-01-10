@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Date;
 import java.util.List;
-
+import java.util.UUID;
 
 import javax.imageio.ImageIO;
 
@@ -41,11 +41,8 @@ public class BoardController {
 	@RequestMapping("/Boardsave")
 	public void Boardsave(String content, String img, String ucUid, String indate, String result) {
 
-		System.out.println("오고있지?");
-		System.out.println(ucUid);
-		
-		// 이미지 Base64에서 이름 설정하기
-		String img_name = img.substring(0,20);
+		// UUID 생성해서 이름 설정하기
+		String img_name = UUID.randomUUID().toString();
 		
 		// 이미지 경로 설정
 		String savePath = "C:/Users/smhrd/Desktop/project/user_scalp_img/"+ ucUid + "-" + img_name +".png";
@@ -116,7 +113,8 @@ public class BoardController {
 	@RequestMapping("/getImage")
 	public String getImage(String ucNum) {		
 		// DB에서 경로 받아옴
-		System.out.println("여기 왔니?");
+		System.out.println("여기 오냐?" +ucNum);
+		
 
 		tb_user_scalp_care uc_board = repo.findByUcNum(Long.valueOf(ucNum));
 		String base64_img = null;
