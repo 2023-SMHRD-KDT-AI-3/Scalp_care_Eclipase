@@ -47,7 +47,6 @@ public class BoardController {
 		// 이미지 경로 설정
 		String savePath = "C:/Users/smhrd/Desktop/project/user_scalp_img/"+ ucUid + "-" + img_name +".png";
 		
-		
 		// Base64 공백 제거
 		img = img.replaceAll("\\s+", "");
 		System.out.println(img.length());
@@ -206,5 +205,14 @@ public class BoardController {
 				e.printStackTrace();
 			}
 		return jsonList;	
-	}	
+	}
+	
+	@RequestMapping("/boardDelete")
+	public void boardDelete(String ucNum) {
+	
+		System.out.println("삭제시작함");
+		
+		repo.deleteById(Long.valueOf(ucNum));
+		
+	}
 }
