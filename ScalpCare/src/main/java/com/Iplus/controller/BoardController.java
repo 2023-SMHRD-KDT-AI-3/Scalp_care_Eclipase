@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import javax.imageio.ImageIO;
@@ -30,6 +31,8 @@ import com.Iplus.repository.UserScalpCareRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import lombok.Setter;
+
 @Controller
 @RestController
 public class BoardController {
@@ -45,7 +48,7 @@ public class BoardController {
 		String img_name = UUID.randomUUID().toString();
 		
 		// 이미지 경로 설정
-		String savePath = "C:/Users/smhrd/Desktop/project/user_scalp_img/"+ ucUid + "-" + img_name +".png";
+		String savePath = "C:/Users/smhrd/Desktop/project/user_scalp_img/"+ img_name +".png";
 		
 		// Base64 공백 제거
 		img = img.replaceAll("\\s+", "");
@@ -215,4 +218,52 @@ public class BoardController {
 		repo.deleteById(Long.valueOf(ucNum));
 		
 	}
+	
+	@RequestMapping("/resave")
+	public void resave(String ucNum, String content, String img, String result) {
+		
+		System.out.println("여기오는거 맞지?");
+		
+		// UUID 생성해서 이름 설정하기
+		String img_name = UUID.randomUUID().toString();
+		
+		// 이미지 경로 설정
+		String savePath = "C:/Users/smhrd/Desktop/project/user_scalp_img/"+ img_name +".png";
+		
+		// Base64 공백 제거
+		img = img.replaceAll("\\s+", "");
+		System.out.println(img.length());
+		
+		byte[] decodeBytes = Base64.getDecoder().decode(img.getBytes());
+				
+		// 이미지 저장
+		try {
+            ByteArrayInputStream bis = new ByteArrayInputStream(decodeBytes);
+            BufferedImage image = ImageIO.read(bis);
+            
+            // 이미지를 파일로 저장 (예: PNG 형식)
+            File outputFile = new File(savePath);
+            ImageIO.write(image, "png", outputFile);
+            
+            System.out.println("Image saved successfully!");
+        } catch (IOException e) {
+            System.out.println("Error converting byte array to image: " + e.getMessage());
+        }
+
+		Optional<tb_user_scalp_care> optional = repo.findById(Long.valueOf(ucNum));
+		tb_user_scalp_care uc = null;
+		if(optional.isPresent()) {
+			uc = optional.get();
+		} 
+		
+		uc.setImg(savePath);
+		uc.setContent(content);
+		uc.setResult(result);
+		
+		repo.save(uc);
+		
+		
+		
+	}
+	
 }
